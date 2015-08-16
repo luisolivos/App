@@ -1,0 +1,23 @@
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type = "text/javascript">
+function ShowCurrentTime() {
+    $.ajax({
+        type: "POST",
+        url: "http://192.168.1.90:80/CS.aspx/GetCurrentTime",
+        data: '{name: "dfg" }',
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: OnSuccess,
+        error: OnError
+    });
+}
+function OnSuccess(response) {
+    alert(response.d);
+}
+function OnError(response) {    alert("Error connection" + response.d);}
+</script>
+
+<input name="txt" type="text" id="user" />
+<input id="btnGetTime" type="button" value="Show Current Time" onclick="ShowCurrentTime()" />
